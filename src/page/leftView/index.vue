@@ -25,7 +25,7 @@
                     <i :class="child.icon"></i>
                     <span>{{child.title}}</span>
                   </template>
-                  <el-menu-item v-for="a in child.children" :index="`${a.index}`"> <i :class="child.icon"></i> {{a.title}}</el-menu-item>
+                  <el-menu-item v-for="a in child.children" :index="`${a.index}`" v-bind:key="a.index"> <i :class="child.icon"></i> {{a.title}}</el-menu-item>
                 </el-submenu>
                 <el-menu-item v-else  :index="child.index"> <icon :icon-class="child.icon" :size="30"/>{{child.title}}</el-menu-item>
               </template>
