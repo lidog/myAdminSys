@@ -3,3 +3,8 @@
  * @version 2018/5/14
  * @description
  */
+.dian{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

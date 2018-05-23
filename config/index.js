@@ -10,7 +10,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    /*
+     * 跨域设置
+     * 访问 /mobile 开头的请求 的时候，会去被重写为 http://192.168.10.30
+     *  localhost:8080/mobile/user/list  就是去 拿 http://192.168.10.30/user/list
+     * */
+    proxyTable: {
+      '/mid': {
+        target:'http://192.168.10.30',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/mid': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +33,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

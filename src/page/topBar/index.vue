@@ -11,12 +11,26 @@
                 <img :src="src"/>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>首页</el-dropdown-item>
-                <el-dropdown-item>退出</el-dropdown-item>
+               <router-link to="/homePage"><el-dropdown-item>首页</el-dropdown-item></router-link>
+                <el-dropdown-item @click.native="dialogVisible=true">退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
+            <div class="user-name dian">{{$store.getters.username}}</div>
           </div>
       </div>
+
+      <el-dialog
+        title="提示"
+        :visible.sync="dialogVisible"
+        width="30%"
+        >
+        <span>确定要退出平台吗？</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="logout">确 定</el-button>
+        </span>
+      </el-dialog>
+
     </div>
 </template>
 <script>
@@ -24,12 +38,17 @@
         data: function () {
             return {
               src:require("@/assets/images/user.png"),
+              dialogVisible:false,
+              username:''
             }
         },
         props:{
           isCollapse:{
               type:Boolean
           }
+        },
+        mounted(){
+
         },
         computed:{
           title:function () {
@@ -39,6 +58,12 @@
         methods:{
           hideLeftBar:function () {
             this.$emit('toggleLeft',!this.$props.isCollapse);
+          },
+          logout:function () {
+            this.dialogVisible = false;
+            this.$store.dispatch('Logout').then(()=>{
+              this.$router.push({ path: '/'})
+            });
           }
         }
     }
@@ -66,11 +91,19 @@
 
   .top-bar-right{
     margin-right: 20px;
+    cursor: pointer;
   }
   .user-img{
+    display: flex;
+    align-items: center;
     img{
       width: 40px;
       height: 40px;
+    }
+    .user-name{
+      margin-left: 10px;
+      max-width: 100px;
+      color: brown;
     }
   }
 </style>

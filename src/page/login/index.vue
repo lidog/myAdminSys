@@ -1,19 +1,20 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" autoComplete="on" label-position="left" ref="loginForm" :rules="rules" :model="loginForm">
+    <el-form class="login-form" autoComplete="on" label-position="left" ref="loginForm" :rules="rules"
+             :model="loginForm">
       <h3 class="title">admin-system</h3>
 
       <el-form-item prop="username">
-        <span class="svg-container svg-container_login"><icon icon-class="icon-yonghu" /></span>
-        <el-input  autoComplete="on" placeholder="用户名" v-model="loginForm.username" />
+        <span class="svg-container svg-container_login"><icon icon-class="icon-yonghu"/></span>
+        <el-input autoComplete="on" placeholder="用户名" v-model="loginForm.username"/>
       </el-form-item>
       <el-form-item prop="password">
-        <span class="svg-container"><icon icon-class="icon-mima" /></span>
-        <el-input :type="loginForm.pwdType" autoComplete="on" placeholder="密码" v-model="loginForm.password"></el-input>
-        <span class="show-pwd" @click="changeType"><icon icon-class="icon-eye" /></span>
+        <span class="svg-container"><icon icon-class="icon-mima"/></span>
+        <el-input :type="pwdType" autoComplete="on" placeholder="密码" v-model="loginForm.password" @keyup.enter.native="submitForm('loginForm')"></el-input>
+        <span class="show-pwd" @click="changeType"><icon icon-class="icon-eye"/></span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;" @click="submitForm('loginForm')">Sign in</el-button>
+        <el-button type="primary" style="width:100%;" @click="submitForm('loginForm')">登录  Sign in</el-button>
       </el-form-item>
 
       <div class="tips">
@@ -24,54 +25,57 @@
   </div>
 </template>
 <script>
-    import { pattens } from '@/util/patten';
+  import {pattens} from '@/util/patten';
+  import {getRouter} from '@/util/getRouter'
 
-    export default {
-        data() {
-            const validatePass = pattens('password');//获取验证器
-            return {
-              loginForm:{
-                username:'',
-                password:'',
-                pwdType:"password",
-              },
-              rules:{
-                username: [
-                  { required: true, message: '用户名不能为空',trigger: 'blur' },
-                  { min: 4, max: 16, message: '长度在 4 到 16 个字符', trigger: 'blur'}
-                ],
-                password:[
-                  { required: true, message: '密码不能为空', trigger: 'blur' },
-                  { trigger: 'blur',validator: validatePass}
-                ]
-              }
-            }
+  export default {
+    data() {
+      const validatePass = pattens('password');//获取验证器
+      return {
+        loginForm: {
+          username: '',
+          password: '',
         },
-        methods:{
-          submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
-              if (valid) {
-                this.$router.push({ path: '/homePage'})
-              } else {
-                console.log('error submit!!');
-                return false;
-              }
-            });
-          },
-          changeType:function () {
-            if (this.loginForm.pwdType === 'password') {
-              this.loginForm.pwdType  = ''
-            } else {
-              this.loginForm.pwdType  = 'password'
-            }
-          }
+        pwdType: "password",
+        rules: {
+          username: [
+            {required: true, message: '用户名不能为空', trigger: 'blur'},
+            {min: 4, max: 16, message: '长度在 4 到 16 个字符', trigger: 'blur'}
+          ],
+          password: [
+            {required: true, message: '密码不能为空', trigger: 'blur'},
+            {trigger: 'blur', validator: validatePass}
+          ]
         }
+      }
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.$store.dispatch("Login", this.loginForm).then(() => {
+              this.$router.push({path: '/homePage'});
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      changeType: function () {
+        if (this.pwdType === 'password') {
+          this.pwdType = ''
+        } else {
+          this.pwdType = 'password'
+        }
+      }
     }
+  }
 </script>
 
 <style lang="scss">
-  $bg:#2d3a4b;
-  $light_gray:#eee;
+  $bg: #2d3a4b;
+  $light_gray: #eee;
   /* reset element-ui css */
   .login-container {
     .el-input {
@@ -98,7 +102,7 @@
       border-radius: 5px;
       color: #454545;
     }
-    .el-input__inner{
+    .el-input__inner {
       background-color: #2d3a4b;
     }
   }
@@ -106,9 +110,9 @@
 </style>
 
 <style lang="scss" scoped>
-  $bg:#2d3a4b;
-  $dark_gray:#889aa4;
-  $light_gray:#eee;
+  $bg: #2d3a4b;
+  $dark_gray: #889aa4;
+  $light_gray: #eee;
   .login-container {
     position: fixed;
     height: 100%;

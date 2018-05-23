@@ -1,0 +1,26 @@
+{
+  "userInfo":{
+    "username":"lzh",
+    "password":"234525",
+    "userId":1
+  },
+  "router":[
+    {
+      "icon":"el-icon-location",
+      "title":"导航二",
+      "name":"page3"
+    },
+    {
+      "icon":"el-icon-location",
+      "title":"导航三",
+      "name":"1",
+      "children":[
+        {
+          "icon":"icon-daohang",
+          "title":"page2",
+          "name":"page2"
+        }
+      ]
+    }
+  ]
+}

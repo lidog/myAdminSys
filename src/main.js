@@ -21,12 +21,20 @@ Vue.component('icon', icon);
 //加入进度条
 import '@/permission' // permission control
 
+//加入状态管理
+import store from '@/store'
+
+//引入 axios 实例
+import $http from '@/util/$http'
+Vue.prototype.$http = $http;
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
