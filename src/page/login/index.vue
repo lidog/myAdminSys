@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" label-position="left" ref="loginForm" :rules="rules"
              :model="loginForm">
-      <h3 class="title">admin-system</h3>
+      <h3 class="title">lidog-admin-system</h3>
 
       <el-form-item prop="username">
         <span class="svg-container svg-container_login"><icon icon-class="icon-yonghu"/></span>

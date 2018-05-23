@@ -8,6 +8,10 @@
 * 引入阿里iconfont ，图标不用愁
 * 项目依赖少，更加轻便
 
+![Alt 功能模块](https://github.com/lidog/myAdminSys/blob/master/egImg/1.png)
+
+![Alt 功能模块](https://github.com/lidog/myAdminSys/blob/master/egImg/2.png)
+
 
 ## Build Setup
 
