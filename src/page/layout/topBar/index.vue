@@ -2,7 +2,7 @@
     <div class="top-bar">
       <div class="top-bar-left" @click="hideLeftBar" :class="isCollapse?'hide':''">
         <icon icon-class="icon-daohang" :size="30"/>
-        <span>链能中心管理平台</span>
+        <span>中心管理平台</span>
       </div>
       <div class="title">{{title}}</div>
       <div class="top-bar-right">
