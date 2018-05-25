@@ -1,26 +1,170 @@
 {
-  "userInfo":{
-    "username":"lzh",
-    "password":"234525",
-    "userId":1
+  "userInfo": {
+    "username": "lzh",
+    "password": "234525",
+    "userId": 1
   },
-  "router":[
+  "router": [
     {
-      "icon":"el-icon-location",
-      "title":"导航二",
-      "name":"page3"
+      "icon": "icon-shu",
+      "title": "树形控件",
+      "name": "page2"
     },
     {
-      "icon":"el-icon-location",
-      "title":"导航三",
-      "name":"1",
-      "children":[
+      "icon": "icon-daohang",
+      "title": "导航三",
+      "name": "1",
+      "children": [
         {
-          "icon":"icon-daohang",
-          "title":"page2",
-          "name":"page2"
+          "icon": "icon-zidingyiyemian",
+          "title": "page3",
+          "name": "page3"
         }
       ]
     }
-  ]
+  ],
+  "table": {
+    "rows": [
+      {
+        "userAccountId": "02b7f44f-12b2-4dee-a6de-6a679c20b2eb",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "wangw",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "王五",
+        "gender": 1,
+        "mobilePhone": "15890392321",
+        "emailAddress": "hjkdfd@126.com",
+        "createTime": "2018-05-22 16:59:53",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:02:36"
+      },
+      {
+        "userAccountId": "02b7f44f-12b2-4dee-a6de-6a679c20b2eb",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e834",
+        "loginName": "wangw",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "飞机",
+        "gender": 1,
+        "mobilePhone": "15890392321",
+        "emailAddress": "hjkdfd@126.com",
+        "createTime": "2018-05-22 16:59:53",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:02:36"
+      },
+      {
+        "userAccountId": "02b7f44f-12b2-4dee-a6de-6a679c20b2eb",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "wangw",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "王五",
+        "gender": 1,
+        "mobilePhone": "15890392321",
+        "emailAddress": "hjkdfd@126.com",
+        "createTime": "2018-05-22 16:59:53",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:02:36"
+      },
+      {
+        "userAccountId": "02b7f44f-12b2-4dee-a6de-6a679c20b2eb",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e834",
+        "loginName": "wangw",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "飞机",
+        "gender": 1,
+        "mobilePhone": "15890392321",
+        "emailAddress": "hjkdfd@126.com",
+        "createTime": "2018-05-22 16:59:53",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:02:36"
+      },
+      {
+        "userAccountId": "0184be6d-0534-42ea-a602-af29ddded4b6",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "guany",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "关羽",
+        "gender": 1,
+        "mobilePhone": "13409586074",
+        "emailAddress": "guany@126.com",
+        "createTime": "2018-05-10 17:44:05",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:10:20"
+      },
+      {
+        "userAccountId": "300d017c-8de7-46ee-99c2-aeda1e204cf3",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "administrator",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "王志",
+        "gender": 1,
+        "mobilePhone": "13632315851",
+        "emailAddress": "wangzhi@163.com",
+        "createTime": "2017-07-21 11:50:15",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-22 17:10:40"
+      },
+      {
+        "userAccountId": "14872eef-a1d7-4439-9a2c-05635f936e85",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "lis",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "李四",
+        "gender": 1,
+        "mobilePhone": "13632315859",
+        "emailAddress": "651165330@qq.com",
+        "createTime": "2018-05-17 16:56:02",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-21 17:31:23"
+      },
+      {
+        "userAccountId": "9afd5230-65e5-438f-a9ba-fb7d596737b0",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "liub",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "刘备",
+        "gender": 1,
+        "mobilePhone": "13245678901",
+        "emailAddress": null,
+        "createTime": "2018-05-10 17:44:29",
+        "deleteFlag": 0,
+        "status": 0,
+        "updateTime": "2018-05-10 17:44:29"
+      },
+      {
+        "userAccountId": "ce8ac0ca-eaaa-4215-a422-fa395d579e71",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "zhangf",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "张飞",
+        "gender": 0,
+        "mobilePhone": "1334567891",
+        "emailAddress": null,
+        "createTime": "2018-05-02 11:40:40",
+        "deleteFlag": 0,
+        "status": 0,
+        "updateTime": "2018-05-02 11:40:40"
+      },
+      {
+        "userAccountId": "7af095df-0c7b-48de-96fe-3fa9843b4458",
+        "headId": "8a34f80c-a1d3-440f-8dfc-7eb21e74a2e8",
+        "loginName": "huangc",
+        "loginPassword": "e10adc3949ba59abbe56e057f20f883e",
+        "realName": "黄超",
+        "gender": 1,
+        "mobilePhone": "1334567890",
+        "emailAddress": null,
+        "createTime": "2018-05-02 11:37:27",
+        "deleteFlag": 0,
+        "status": 1,
+        "updateTime": "2018-05-02 11:37:27"
+      }
+    ]
+  }
 }

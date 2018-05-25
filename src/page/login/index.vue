@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" label-position="left" ref="loginForm" :rules="rules"
              :model="loginForm">
-      <h3 class="title">lidog-admin-system</h3>
+      <h3 class="title">链能中心管理平台</h3>
 
       <el-form-item prop="username">
         <span class="svg-container svg-container_login"><icon icon-class="icon-yonghu"/></span>
@@ -17,10 +17,10 @@
         <el-button type="primary" style="width:100%;" @click="submitForm('loginForm')">登录  Sign in</el-button>
       </el-form-item>
 
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div>
+      <!--<div class="tips">-->
+        <!--<span style="margin-right:20px;">username: admin</span>-->
+        <!--<span> password: admin</span>-->
+      <!--</div>-->
     </el-form>
   </div>
 </template>

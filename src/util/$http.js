@@ -6,8 +6,13 @@
 
 import axios from 'axios'
 import store from '../store'
-import { Message, MessageBox } from 'element-ui'
+import { Message, MessageBox  } from 'element-ui'
+import { Loading } from 'element-ui'
 import {getToken} from './cookie.js'
+
+//所有请求加上loading
+var loadingInstance;
+
 
 // 创建axios实例
 const service = axios.create({
@@ -18,6 +23,7 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
+  // loadingInstance =  Loading.service({ fullscreen: true ,spinner: 'el-icon-loading', background: 'rgba(0, 0, 0, 0.7)'})
   if (store.getters.token) {
     config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // config.data['token'] = getToken()||''
@@ -71,6 +77,23 @@ service.interceptors.request.use(config => {
 //     return Promise.reject(error)
 //   }
 // )
+
+service.interceptors.response.use(
+  response => {
+    // loadingInstance.close();
+    return response
+  },
+  error => {
+    console.log('err' + error)// for debug
+    Message({
+      message: error.message,
+      type: 'error',
+      duration: 5 * 1000
+    })
+    return Promise.reject(error)
+  }
+)
+
 
 export default service
 

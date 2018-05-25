@@ -5,6 +5,10 @@ import {getRouter} from '@/util/getRouter'
 import $http from '@/util/$http'
 import store from '@/store'
 import {getToken} from '@/util/cookie'
+import {$alert} from "element-ui"
+import Vue from 'vue';
+import { MessageBox } from 'element-ui';
+Vue.component(MessageBox.name, MessageBox );
 
 
 const whiteList = ['/login']// 白名单页面数组
@@ -20,7 +24,11 @@ router.beforeEach((to, from, next) => {
       next();
     }else {
       //没有登录，也不是白名单，强制跳转到登录页
-      next('/');
+      MessageBox('你已被登出，可以取消继续留在该页面，或者重新登录', '重新登录', {
+        confirmButtonText: '确定',
+      }).then(()=>{
+        next('/');
+      });
     }
   }else {
     if (to.path === '/') {

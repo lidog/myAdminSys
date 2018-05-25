@@ -8,3 +8,25 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.flex-box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container{
+  position: absolute;
+  top:20px;
+  left: 20px;
+  right:20px;
+  bottom: 20px;
+  background-color: #fff;
+}
+
+body .el-table th{
+  text-align: center;
+}
+
+/*工具类*/
+.pd20{
+  padding:20px;
+}
