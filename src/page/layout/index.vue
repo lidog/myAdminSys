@@ -1,14 +1,21 @@
 <template>
   <div>
     <left-view :isCollapse="isCollapse" class="layout-left" :class="isCollapse?'on':''"/>
+
     <div class="layout-right" :class="isCollapse?'on':''">
       <top-bar class="layout-top" :isCollapse="isCollapse" @toggleLeft="toggleLeft"/>
 
+      <transition :name="transitionName">
+        <router-view class="layout-main" name="main"/>
+      </transition>
 
-      <router-view class="layout-main" name="main"/>
     </div>
+
+
   </div>
 </template>
+
+
 <script>
 
   import leftView from './leftView'
@@ -18,6 +25,15 @@
     data: function () {
       return {
         isCollapse: false,
+        transitionName: 'slide-left',
+        isShow:false
+      }
+    },
+    watch: {
+      '$route' (to, from) {
+        const toDepth = to.path.split('/').length
+        const fromDepth = from.path.split('/').length
+        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
       }
     },
     components: {
@@ -65,13 +81,23 @@
     }
   }
   .layout-main{
-    transition: all 0.5s;
     position: absolute;
     left: 180px;
     top:50px;
     right:0;
     bottom: 0;
     background: #f5f6fa;
+    transition: all .1s cubic-bezier(.55,0,.1,1);
   }
+
+  .slide-left-enter, .slide-right-leave-active {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+  .slide-left-leave-active, .slide-right-enter {
+    opacity: 0;
+    transform: translate(-80px, 0);
+  }
+
 
 </style>

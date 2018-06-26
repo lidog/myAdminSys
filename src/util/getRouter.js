@@ -5,6 +5,8 @@
  */
 import layout from '@/page/layout'
 
+import homePage from '@/page/main/homePage/homePage.vue'
+
 //动态获得路由
 export function getRouter(data) {
   if (data.length > 0) {
@@ -41,8 +43,16 @@ export function getRouter(data) {
   }
 
   function getComponents(name) {
+    let main;
+    //防止后端传过来的的router没有对应页面，要捕捉错误
+    try{
+      main =  require(`@/page/main/${name}/${name}`).default
+    }catch(err){
+      console.log("no such page: " + name)
+      main = homePage
+    }
     return {
-      main: require(`@/page/main/${name}/${name}`).default
+      main: main
     }
   }
 }

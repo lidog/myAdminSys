@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" label-position="left" ref="loginForm" :rules="rules"
              :model="loginForm">
-      <h3 class="title">链能中心管理平台</h3>
+      <h3 class="title">购电宝/用电宝管理系统</h3>
 
       <el-form-item prop="username">
         <span class="svg-container svg-container_login"><icon icon-class="icon-yonghu"/></span>
@@ -14,9 +14,8 @@
         <span class="show-pwd" @click="changeType"><icon icon-class="icon-eye"/></span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;" @click="submitForm('loginForm')">登录  Sign in</el-button>
+        <el-button type="primary" style="width:100%;" @click="submitForm">登录  Sign in</el-button>
       </el-form-item>
-
       <!--<div class="tips">-->
         <!--<span style="margin-right:20px;">username: admin</span>-->
         <!--<span> password: admin</span>-->
@@ -26,21 +25,20 @@
 </template>
 <script>
   import {pattens} from '@/util/patten';
-  import {getRouter} from '@/util/getRouter'
 
   export default {
     data() {
       const validatePass = pattens('password');//获取验证器
       return {
         loginForm: {
-          username: '',
-          password: '',
+          username: 'lzh',
+          password: '123456',
         },
         pwdType: "password",
         rules: {
           username: [
             {required: true, message: '用户名不能为空', trigger: 'blur'},
-            {min: 4, max: 16, message: '长度在 4 到 16 个字符', trigger: 'blur'}
+            {min: 3, max: 16, message: '长度在 4 到 16 个字符', trigger: 'blur'}
           ],
           password: [
             {required: true, message: '密码不能为空', trigger: 'blur'},
@@ -50,8 +48,8 @@
       }
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+      submitForm() {
+        this.$refs['loginForm'].validate((valid) => {
           if (valid) {
             this.$store.dispatch("Login", this.loginForm).then(() => {
               this.$router.push({path: '/homePage'});

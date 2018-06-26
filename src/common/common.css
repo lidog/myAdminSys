@@ -25,8 +25,13 @@
 body .el-table th{
   text-align: center;
 }
-
+.my-loader{
+  font-size: 40px;
+}
 /*工具类*/
 .pd20{
   padding:20px;
 }
+
+
+

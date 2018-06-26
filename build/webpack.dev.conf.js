@@ -11,7 +11,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 
-//mock 数据
+// mock 数据
 const express = require('express')
 const app = express()
 var appData = require('../src/data.json')//加载本地数据文件
@@ -56,30 +56,31 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app){
+      // api 前面要加‘/’
       app.post('/api/user/login', function (req, res) { // 注意这里改为post就可以了
         res.json({
-          errno: 0,
+          status: 1,
           data: {
             token: "firstUser",
             userId: 1
           }
         });
       }),
-        app.get('/api/user', function (req, res) { // 注意这里改为post就可以了
+        app.post('/api/user', function (req, res) { // 注意这里改为post就可以了
           res.json({
-            errno: 0,
+            status: 1,
             data: userInfo
           });
         }),
-        app.get('/api/router', function (req, res) { // 注意这里改为post就可以了
+        app.post('/api/router', function (req, res) { // 注意这里改为post就可以了
           res.json({
-            errno: 0,
+            status: 1,
             data: router
           });
         }),
-        app.get('/api/table', function (req, res) { // 注意这里改为post就可以了
+        app.post('/api/table', function (req, res) { // 注意这里改为post就可以了
           res.json({
-            errno: 0,
+            status: 1,
             data: table
           });
         })

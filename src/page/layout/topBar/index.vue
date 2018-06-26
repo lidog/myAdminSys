@@ -2,17 +2,15 @@
     <div class="top-bar">
       <div class="top-bar-left" @click="hideLeftBar" :class="isCollapse?'hide':''">
         <icon icon-class="icon-daohang" :size="30"/>
-        <span>中心管理平台</span>
+        <span>购电宝/用电宝管理系统</span>
       </div>
       <div class="title">{{title}}</div>
       <div class="top-bar-right">
           <div class="user-img">
             <el-dropdown>
               <span class="el-dropdown-link">
-                <!--<img :src="src"/>-->
                 <icon icon-class="icon-76" :size="30"></icon>
               </span>
-
               <el-dropdown-menu slot="dropdown">
                <router-link to="/homePage"><el-dropdown-item>首页</el-dropdown-item></router-link>
                 <el-dropdown-item @click.native="dialogVisible=true">退出</el-dropdown-item>
@@ -65,7 +63,7 @@
           logout:function () {
             this.dialogVisible = false;
             this.$store.dispatch('Logout').then(()=>{
-              this.$router.push({ path: '/'})
+              this.$router.push({ path: '/login'})
             });
           }
         }

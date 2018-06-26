@@ -6,17 +6,24 @@
 
 const router = {
   state:{
-    router:[]
+    router:[],
+    rqRouter:false//是否申请过
   },
   mutations:{
     SET_ROUTER:(state,router) => {
       state.router = router;
     },
+    setRQ:(state)=>{
+      state.rqRouter = true;
+    }
   },
   actions:{
     setRouter({commit},router){
       commit('SET_ROUTER', router);
     },
+    hadRq({commit}){
+      commit('setRQ');
+    }
   },
 }
 

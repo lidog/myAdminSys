@@ -3,12 +3,12 @@ import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import {getRouter} from '@/util/getRouter'
 import $http from '@/util/$http'
+import ajaxApi from '@/util/ajaxApi'
 import store from '@/store'
-import {getToken} from '@/util/cookie'
-import {$alert} from "element-ui"
+import {getToken, removeToken} from '@/util/cookie'
 import Vue from 'vue';
-import { MessageBox } from 'element-ui';
-Vue.component(MessageBox.name, MessageBox );
+import {MessageBox} from 'element-ui';
+Vue.component(MessageBox.name, MessageBox);
 
 
 const whiteList = ['/login']// 白名单页面数组
@@ -18,42 +18,61 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
   let token = getToken();
   //如果没有登录
-  if(!token){
+  if (!token) {
     //如果是白名单页面，直接跳
-    if(whiteList.indexOf(to.path) !== -1){
+    if (whiteList.indexOf(to.path) !== -1) {
       next();
-    }else {
+    } else {
       //没有登录，也不是白名单，强制跳转到登录页
-      MessageBox('你已被登出，可以取消继续留在该页面，或者重新登录', '重新登录', {
+      MessageBox('你已被登出或者登陆过期，请重新登录(no-token)', '重新登录', {
         confirmButtonText: '确定',
-      }).then(()=>{
-        next('/');
+      }).then(() => {
+        next({path: '/login'})
       });
     }
-  }else {
-    if (to.path === '/') {
-      next({path: '/login'})
-      NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
+  } else {
+    if (to.path === '/login') {
+      next()
+      NProgress.done() // 进度
     } else {
       let username = store.getters.username;
-      let newRouter = store.getters.router;
-      //如果没有找到用户名（刷新了），重新申请并重载路由；
-      if (!username || newRouter.length == 0) {
-        $http({
-          url: "/api/user",
-          type: 'get',
-        }).then(data => {
-          let userInfo = data.data.data;
-          store.dispatch('setUser', userInfo);
+      let rqRouter = store.getters.rqRouter;//是否申请过路由
+      if (!username || !rqRouter) {
+        Promise.all([
+          //申请username
           $http({
-            type: "get",
-            url: "/api/router"
-          }).then(response => {
-            let newRouter = response.data.data;
-            store.dispatch("setRouter", newRouter);
-            router.addRoutes(getRouter(newRouter))
-            next({...to, replace: true})
+            url: ajaxApi.user.userInfo,
+          }),
+          //申请menu
+          $http({
+            url: ajaxApi.user.menu,
+            data:{
+              applicationId: "910609ca-18f0-4e5f-bbf6-100a9f86fb4f"
+            }
           })
+        ]).then(([user,routerData]) => {
+          let userInfo = {
+            username: user.realName,
+            userId: user.userAccountId
+          }
+          //then中的函数如果语法有错 也会被catch 捕获，陷入循环跳出bug，注意
+          store.dispatch('setRes', user);
+          store.dispatch('setToken', user.token);
+          store.dispatch('setUser', userInfo);
+          store.dispatch("setRouter", routerData);
+          store.dispatch('hadRq');
+          if(routerData.length>0){//如果routerData 返回 [] ;会报错
+            router.addRoutes(getRouter(routerData));
+          }
+          next({...to, replace: true})
+        }).catch(err => {
+          console.log(err)
+          MessageBox('你已被登出或者登陆过期，请重新登录', '重新登录', {
+            confirmButtonText: '确定',
+          }).then(() => {
+            removeToken();
+            next('/login')
+          });
         })
       } else {
         next()

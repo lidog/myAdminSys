@@ -16,11 +16,13 @@ module.exports = {
      *  localhost:8080/mobile/user/list  就是去 拿 http://192.168.10.30/user/list
      * */
     proxyTable: {
-      '/mid': {
-        target:'http://192.168.10.30',
+      '/ln': {
+        target:'http://192.168.10.200:1982',
+        // target:'http://192.168.10.18:8082',
+        // target:'http://192.168.10.188:8082',
         changeOrigin:true,
         pathRewrite:{
-          '^/mid': ''
+          '^/ln': ''
         }
       }
     },
@@ -56,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

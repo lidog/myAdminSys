@@ -27,6 +27,10 @@ import store from '@/store'
 import tools from "@/util/tools"
 Vue.prototype.tools = tools;
 
+//引入 api 表
+import ajaxApi from "@/util/ajaxApi"
+Vue.prototype.ajaxApi  = ajaxApi
+
 //引入 axios 实例
 import $http from '@/util/$http'
 Vue.prototype.$http = $http;
