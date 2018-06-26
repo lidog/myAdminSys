@@ -3,6 +3,8 @@
     <left-view :isCollapse="isCollapse" class="layout-left" :class="isCollapse?'on':''"/>
     <div class="layout-right" :class="isCollapse?'on':''">
       <top-bar class="layout-top" :isCollapse="isCollapse" @toggleLeft="toggleLeft"/>
+
+
       <router-view class="layout-main" name="main"/>
     </div>
   </div>

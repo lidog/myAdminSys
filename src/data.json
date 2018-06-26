@@ -13,7 +13,6 @@
     {
       "icon": "icon-daohang",
       "title": "导航三",
-      "name": "1",
       "children": [
         {
           "icon": "icon-zidingyiyemian",

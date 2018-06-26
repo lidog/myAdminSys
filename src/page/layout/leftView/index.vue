@@ -14,13 +14,13 @@
 
       <template v-for="item in menu">
 
-        <el-submenu v-if="item.children&&item.children.length>0" :index="`${item.name}`">
+        <el-submenu v-if="item.children&&item.children.length>0" :index="`${item.title}`">
           <template slot="title">
             <icon :icon-class="item.icon"></icon>
             <span>{{item.title}}</span>
           </template>
           <template v-for="child in item.children">
-            <el-submenu v-if="child.children&&child.children.length>0" :index="`${child.name}`">
+            <el-submenu v-if="child.children&&child.children.length>0" :index="`${child.title}`">
               <template slot="title">
                 <icon :icon-class="child.icon"></icon>
                 <span>{{child.title}}</span>
