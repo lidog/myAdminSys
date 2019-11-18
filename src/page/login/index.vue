@@ -51,9 +51,10 @@
       submitForm() {
         this.$refs['loginForm'].validate((valid) => {
           if (valid) {
-            this.$store.dispatch("Login", this.loginForm).then(() => {
+            // this.$store.dispatch("Login", this.loginForm).then(() => {
+            //   this.$router.push({path: '/homePage'});
+            // })
               this.$router.push({path: '/homePage'});
-            })
           } else {
             console.log('error submit!!');
             return false;

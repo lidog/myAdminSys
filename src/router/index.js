@@ -22,6 +22,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path:'/spokenTest',
+      component:require('@/page/spokenTest/index.vue').default
     }
   ]
 })

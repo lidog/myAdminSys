@@ -17,7 +17,7 @@ module.exports = {
      * */
     proxyTable: {
       '/ln': {
-        target:'http://192.168.10.200:1982',
+        target:'http://192.168.9.145:13002',
         // target:'http://192.168.10.18:8082',
         // target:'http://192.168.10.188:8082',
         changeOrigin:true,

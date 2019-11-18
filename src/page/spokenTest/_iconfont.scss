@@ -1,0 +1,43 @@
+  @font-face {
+    font-family: "op-icon"; /* project id 416171 */
+    src: url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.eot");
+    src: url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.eot?#iefix")
+        format("embedded-opentype"),
+      url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.woff2")
+        format("woff2"),
+      url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.woff") format("woff"),
+      url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.ttf")
+        format("truetype"),
+      url("http://at.alicdn.com/t/font_416171_t8sbfhrp9hm.svg#op-icon")
+        format("svg");
+  }
+[class^="op-icon"],
+[class*=" op-icon"] {
+  font-family: "op-icon" !important;
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.op-icon-wechatpay:before {
+  content: "\e663";
+}
+.op-icon-alipay:before {
+  content: "\e656";
+}
+.op-icon-up:before {
+  content: "\e637";
+}
+.op-icon-down:before {
+  content: "\e636";
+}
+.op-icon-register:before {
+  content: "\e618";
+}
+.op-icon-share:before {
+  content: "\e603";
+}
+.op-icon-branch:before {
+  content: "\e775";
+}
